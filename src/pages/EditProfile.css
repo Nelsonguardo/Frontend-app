@@ -1,0 +1,124 @@
+.editprofile-container {
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editprofile-card {
+  border-radius: 1.1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(30,60,114,0.10);
+  border: none;
+  background: #fff;
+  padding: 1.2rem 0.7rem 1rem 0.7rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-header.bg-primary {
+  background: linear-gradient(90deg, #2a5298 60%, #232526 100%);
+  color: #fff;
+  border-radius: 1.1rem 1.1rem 0 0;
+  padding: 0.7rem 1rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(42,82,152,0.10);
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.form-label {
+  color: #2a5298;
+  font-weight: 500;
+  font-size: 0.97rem;
+  margin-bottom: 0.08rem;
+  margin-left: 0.1rem;
+  text-align: left;
+  width: 95%;
+  min-width: 240px;
+  align-self: center;
+}
+
+.form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #e3e6ee;
+  padding: 0.45rem 0.9rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  background: #f7f9fc;
+  transition: border 0.2s, box-shadow 0.2s;
+  width: 95%;
+  min-width: 240px;
+  align-self: center;
+}
+.form-control:focus {
+  border: 1.5px solid #2a5298;
+  box-shadow: 0 2px 8px rgba(42,82,152,0.08);
+  outline: none;
+  background: #fff;
+}
+
+textarea.form-control {
+  min-height: 110px;
+  resize: vertical;
+  padding-bottom: 1.2rem;
+}
+
+.btn.btn-primary {
+  background: #2a5298;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.45rem 1.3rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.2s;
+  color: #fff;
+  margin-top: 0.7rem;
+  width: auto;
+  align-self: center;
+  box-shadow: 0 2px 8px rgba(42,82,152,0.08);
+  display: block;
+}
+.btn.btn-primary:hover {
+  background: #232526;
+}
+
+.alert-info {
+  background: rgba(42,82,152,0.08);
+  color: #2a5298;
+  border: none;
+  border-radius: 0.7rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.2rem;
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+.form-group {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.form-control, textarea.form-control {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 700px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+}

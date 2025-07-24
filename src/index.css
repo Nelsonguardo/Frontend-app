@@ -1,0 +1,66 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo global para el body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Estilos para la Navbar */
+.navbar {
+    background-color: #007bff;
+    padding: 10px 20px;
+}
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+}
+.navbar .nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor principal para secciones */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para formularios */
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+form input,
+form button,
+form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #0056b3;
+}
