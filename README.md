@@ -1,4 +1,4 @@
-# My Frontend App
+#Frontend App
 
 This project is a modern frontend application built with React that allows users to authenticate, view, edit their profile, and upload a profile picture. It consumes a REST API that uses JWT for authentication.
 
@@ -51,7 +51,7 @@ my-frontend-app
 1. Clone the repository:
 
    ```
-   git clone <repository-url>
+   git clone https://github.com/Nelsonguardo/my-frontend-app.git
    ```
 
 2. Navigate to the project directory:
