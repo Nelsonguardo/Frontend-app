@@ -1,7 +1,7 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { getUserProfile, uploadProfilePhoto } from "../services/api";
 import { useHistory } from "react-router-dom";
-import "./Profile.css";
+import "../pages/styles/Profile.css";
 
 interface RedesSociales {
   github: string;

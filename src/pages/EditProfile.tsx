@@ -1,7 +1,7 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { getUserProfile, editUserProfile } from "../services/api";
-import "./EditProfile.css";
+import "../pages/styles/EditProfile.css";
 
 interface RedesSociales {
   github: string;

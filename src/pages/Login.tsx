@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { loginUser } from "../services/api";
-import "./Login.css";
+import "../pages/styles/Login.css";
 
 const Login: React.FC = () => {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
