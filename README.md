@@ -51,13 +51,13 @@ my-frontend-app
 1. Clone the repository:
 
    ```
-   git clone https://github.com/Nelsonguardo/my-frontend-app.git
+   git clone https://github.com/Nelsonguardo/Frontend-app.git
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd my-frontend-app
+   cd Frontend-app
    ```
 
 3. Install the dependencies:
