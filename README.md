@@ -83,7 +83,6 @@ The application interacts with the following API endpoints:
 - **Login**: `POST http://46.202.88.87:8010/usuarios/api/login/`
 - **Get Profile**: `GET http://46.202.88.87:8010/usuarios/api/perfil/`
 - **Edit Profile**: `PUT http://46.202.88.87:8010/usuarios/api/usuario/perfil/`
-- **Upload Profile Photo**: `PATCH http://46.202.88.87:8010/usuarios/api/perfil/foto/`
 
 ### License
 

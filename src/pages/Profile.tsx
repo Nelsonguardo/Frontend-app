@@ -75,7 +75,7 @@ const Profile: React.FC = () => {
             <div className="profile-photo-section text-center">
               {profile.foto ? (
                 <img
-                  src={`http://46.202.88.87:8010${profile.foto}`}
+                  src={profile.foto} 
                   alt="Foto de perfil"
                   className="profile-photo rounded-circle"
                 />
