@@ -30,6 +30,7 @@ interface ProfileData {
 const EditProfile: React.FC = () => {
   const [formData, setFormData] = useState<ProfileData>({});
   const [mensaje, setMensaje] = useState<string>("");
+  const [tipoMensaje, setTipoMensaje] = useState<'success' | 'error' | ''>('');
   const history = useHistory();
 
   useEffect(() => {
@@ -67,8 +68,43 @@ const EditProfile: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validateFields = () => {
+    if (!formData.first_name || !formData.last_name) {
+      setMensaje('Nombre y apellido son obligatorios.');
+      setTipoMensaje('error');
+      return false;
+    }
+    if (formData.telefono && !/^\d{7,15}$/.test(formData.telefono)) {
+      setMensaje('El teléfono debe contener solo números (7-15 dígitos).');
+      setTipoMensaje('error');
+      return false;
+    }
+    if (formData.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) {
+      setMensaje('Correo electrónico no válido.');
+      setTipoMensaje('error');
+      return false;
+    }
+    const urlFields = ['linkedin', 'twitter', 'github', 'sitio_web'];
+    for (const field of urlFields) {
+      const value = (formData as any)[field];
+      if (value && !/^https?:\/\//.test(value)) {
+        setMensaje(`El campo ${field} debe ser una URL válida (empezar con http:// o https://).`);
+        setTipoMensaje('error');
+        return false;
+      }
+    }
+    return true;
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!validateFields()) {
+      setTimeout(() => {
+        setMensaje("");
+        setTipoMensaje('');
+      }, 3500);
+      return;
+    }
     const token = localStorage.getItem("access_token") || "";
     try {
       const payload = {
@@ -90,14 +126,28 @@ const EditProfile: React.FC = () => {
 
       const response = await editUserProfile(token, payload);
       if (response.status === "success") {
-        setMensaje(response.message);
-        history.push("/profile");
+        setMensaje(response.message || "Perfil actualizado correctamente.");
+        setTipoMensaje('success');
+        setTimeout(() => {
+          setMensaje("");
+          setTipoMensaje('');
+          history.push("/profile");
+        }, 2000);
       } else {
         setMensaje("Error al actualizar perfil");
+        setTipoMensaje('error');
+        setTimeout(() => {
+          setMensaje("");
+          setTipoMensaje('');
+        }, 3500);
       }
     } catch (err) {
-      console.error("Error al actualizar perfil:", err);
       setMensaje("Error al actualizar perfil");
+      setTipoMensaje('error');
+      setTimeout(() => {
+        setMensaje("");
+        setTipoMensaje('');
+      }, 3500);
     }
   };
 
@@ -108,7 +158,9 @@ const EditProfile: React.FC = () => {
           <h3>Editar Perfil</h3>
         </div>
         <div className="card-body">
-          {mensaje && <div className="alert alert-info">{mensaje}</div>}
+          {mensaje && (
+            <div className={`alert ${tipoMensaje === 'success' ? 'alert-success' : 'alert-danger'}`}>{mensaje}</div>
+          )}
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">

@@ -23,7 +23,9 @@ const Profile: React.FC = () => {
   const [profile, setProfile] = useState<BasicInfo & { tipo_usuario?: string, educacion?: any[] } | null>(null);
   const [photo, setPhoto] = useState<File | null>(null);
   const [mensaje, setMensaje] = useState<string>("");
+  const [tipoMensaje, setTipoMensaje] = useState<'success' | 'error' | ''>('');
   const history = useHistory();
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -52,20 +54,38 @@ const Profile: React.FC = () => {
   };
 
   const handlePhotoUpload = async () => {
-    if (!photo) return;
+    if (!photo) {
+      setMensaje("Por favor, selecciona una foto antes de actualizar.");
+      setTipoMensaje('error');
+      setTimeout(() => {
+        setMensaje("");
+        setTipoMensaje('');
+      }, 3500);
+      return;
+    }
     const token = localStorage.getItem("access_token") || "";
     try {
       const data = await uploadProfilePhoto(token, photo);
       setMensaje("Foto actualizada correctamente.");
+      setTipoMensaje('success');
       setProfile({ ...profile, foto: data.data.foto } as any);
+      setPhoto(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (err) {
       setMensaje("Error al subir la foto.");
+      setTipoMensaje('error');
     }
+    setTimeout(() => {
+      setMensaje("");
+      setTipoMensaje('');
+    }, 3500);
   };
 
   return (
     <div className="container profile-container">
-      {mensaje && <div className="alert alert-info text-center">{mensaje}</div>}
+      {mensaje && (
+        <div className={`alert text-center ${tipoMensaje === 'success' ? 'alert-success' : 'alert-danger'}`}>{mensaje}</div>
+      )}
       {profile ? (
         <div className="card profile-card shadow">
           <div className="card-header bg-primary text-white">
@@ -88,8 +108,8 @@ const Profile: React.FC = () => {
               )}
               <div className="mt-3">
                 <label htmlFor="photo-upload" className="form-label">Cambiar foto</label>
-                <input type="file" id="photo-upload" className="form-control" onChange={handleFileChange} />
-                <button className="btn btn-outline-primary mt-2" onClick={handlePhotoUpload}>
+                <input type="file" id="photo-upload" className="form-control" onChange={handleFileChange} ref={fileInputRef} />
+                <button className="btn btn-outline-primary mt-2" onClick={handlePhotoUpload} disabled={!photo}>
                   Actualizar Foto
                 </button>
               </div>

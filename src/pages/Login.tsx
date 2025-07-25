@@ -14,13 +14,18 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    // Validación de campos vacíos
+    if (!credentials.username || !credentials.password) {
+      setError("Por favor, completa todos los campos.");
+      return;
+    }
     try {
       const response = await loginUser(credentials.username, credentials.password);
       localStorage.setItem("access_token", response.data.access);
       localStorage.setItem("refresh_token", response.data.refresh);
       history.push("/profile");
-    } catch (err) {
-      setError("Error en el login, verifica tus credenciales.");
+    } catch (err: any) {
+      setError("Credenciales inválidas. Verifica tu usuario y contraseña.");
     }
   };
 

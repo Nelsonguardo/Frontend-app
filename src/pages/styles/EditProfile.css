@@ -1,3 +1,8 @@
+body, .editprofile-bg {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: 100vh;
+}
+
 .editprofile-container {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;

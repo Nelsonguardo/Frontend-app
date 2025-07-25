@@ -1,3 +1,8 @@
+body, .profile-bg {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: 100vh;
+}
+
 .profile-container {
   margin: 3.5rem auto 2.5rem auto;
   max-width: 700px;

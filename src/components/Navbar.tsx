@@ -1,15 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Navbar.css';
 import { FaUser, FaEdit, FaSignOutAlt } from 'react-icons/fa';
 
 const Navbar: React.FC = () => {
+  const history = useHistory();
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    history.push('/login');
+  };
   return (
     <nav className="navbar-pro">
       <div className="navbar-pro-container">
         <NavLinkPro to="/profile" icon={<FaUser size={22} />} label="Perfil" />
         <NavLinkPro to="/edit" icon={<FaEdit size={22} />} label="Editar" />
-        <NavLinkPro to="/login" icon={<FaSignOutAlt size={22} />} label="Salir" />
+        <button className="navbar-pro-link" onClick={handleLogout} title="Salir" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
+          <FaSignOutAlt size={22} />
+          <span className="navbar-pro-label">Salir</span>
+        </button>
       </div>
     </nav>
   );

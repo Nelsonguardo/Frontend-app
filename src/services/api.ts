@@ -26,6 +26,7 @@ export const getUserProfile = async (accessToken: string): Promise<any> => {
     const response = await apiClient.get('/perfil/', {
         headers: { Authorization: `Bearer ${accessToken}` },
     });
+    console.log(response);
     return response.data;
 };
 
